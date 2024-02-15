@@ -1,0 +1,24 @@
+{
+  "name": "iconic-lib",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "Common": {
+        "$path": "src/shared"
+      }
+    },
+
+    "ServerScriptService": {
+      "Server": {
+        "$path": "src/server"
+      }
+    },
+
+    "ReplicatedFirst": {
+      "Client": {
+        "$path": "src/client"
+      }
+    }
+  }
+}
