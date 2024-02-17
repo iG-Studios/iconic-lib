@@ -287,20 +287,6 @@ local function createPrompt(prompt : ProximityPrompt, inputType, gui)
 		}
 	end
 
-	--if prompt.HoldDuration > 0 then
-		-- local circleBar = createCircularProgressBar()
-		-- circleBar.Parent = resizeableInputFrame
-		-- table.insert(
-		-- 	tweensForButtonHoldBegin,
-		-- 	TweenService:Create(circleBar.Progress, tweenInfoInFullDuration, { Value = 1 })
-		-- )
-		-- table.insert(
-		-- 	tweensForButtonHoldEnd,
-		-- 	TweenService:Create(circleBar.Progress, tweenInfoOutHalfSecond, { Value = 0 })
-		-- )
-		-- TODO: Implement createCircularProgressBar
-	--end
-
 	InputConnections[#InputConnections + 1] = RunService.RenderStepped:Connect(function(deltaTime)
 		if ButtonHeldDown:get() then
 			CurrentBarSize:set(math.min(CurrentBarSize:get() + deltaTime / prompt.HoldDuration, 1))
