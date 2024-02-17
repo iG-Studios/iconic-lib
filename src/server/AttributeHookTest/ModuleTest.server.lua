@@ -7,14 +7,14 @@ local Connections = AttributeHook.BindAttributes(workspace) {
     {
         AttributeName = "foo",
         Callback = function(foo : number)
-            print("foo changed to", foo)
+            --print("foo changed to", foo)
         end
     },
 
     {
         AttributeName = "bar",
         Callback = function(bar : number)
-            print("bar changed to", bar)
+            --print("bar changed to", bar)
         end
     }
 }
