@@ -17,6 +17,8 @@ local Value = Fusion.Value
 local OnEvent = Fusion.OnEvent
 local Cleanup = Fusion.cleanup
 local Children = Fusion.Children
+local Spring = Fusion.Spring
+local Computed = Fusion.Computed
 
 -- Variables
 local LocalPlayer = Players.LocalPlayer
@@ -72,7 +74,11 @@ local function CreatePrompt(prompt : ProximityPrompt, inputType : Enum.Proximity
 		Name = "Prompt",
 		AlwaysOnTop = true,
 		Parent = gui,
-		Adornee = prompt.Parent
+		Adornee = prompt.Parent,
+
+		StudsOffset = Spring(Computed(function()
+			return PromptTransparency:get() < 1 and Vector3.new(0, 0, 0) or Vector3.new(-1, 0, 0)
+		end), 15, 0.5)
 	} :: BillboardGui
 
 	local Frame : CanvasGroup, ResizeableInputFrame : Frame = unpack(BuildFrames(
