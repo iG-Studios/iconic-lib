@@ -88,7 +88,6 @@ return function(Properties : Properties) : {RBXScriptConnection}
 	end
 
 	InputConnections[#InputConnections + 1] = Properties.prompt.Triggered:Connect(function()
-		print("trigger")
 		if Properties.prompt.HoldDuration > 0 then
 			PlaySound(TRIGGER_SOUND)
 		else
@@ -99,7 +98,6 @@ return function(Properties : Properties) : {RBXScriptConnection}
 	end)
 
 	InputConnections[#InputConnections + 1] = Properties.prompt.TriggerEnded:Connect(function()
-		print("end")
 		Properties.PromptTransparency:set(1)
 	end)
 
