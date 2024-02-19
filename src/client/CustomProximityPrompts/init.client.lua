@@ -157,8 +157,9 @@ local function CreatePrompt(prompt : ProximityPrompt, inputType : Enum.Proximity
 
 	return function() -- Cleanup callback
 		Cleanup(InputConnections)
-		task.delay(0.2, Cleanup, PromptUI)
 		PromptTransparency:set(1)
+		task.wait(2)
+		PromptUI:Destroy()
 	end
 end
 
