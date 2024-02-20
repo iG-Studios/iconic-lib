@@ -8,7 +8,15 @@ local New = Fusion.New
 local Computed = Fusion.Computed
 local Spring = Fusion.Spring
 
-return function(ParentFrame, ButtonHeldDown)
+--[[
+	@docs BuildTextLabels
+	@desc Builds the text labels for the prompt
+	@param ParentFrame : Frame
+	@param ButtonHeldDown : Spring
+	@returns {TextLabel, TextLabel}
+]]
+
+return function(ParentFrame, ButtonHeldDown) : {any}
     local ActionText = New "TextLabel" {
 		Name = "ActionText",
 		Size = UDim2.fromScale(1, 1),

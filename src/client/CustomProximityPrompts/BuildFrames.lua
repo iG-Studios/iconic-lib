@@ -9,7 +9,19 @@ local Computed = Fusion.Computed
 local Spring = Fusion.Spring
 local Children = Fusion.Children
 
-return function(PromptUI, ButtonHeldDown, PromptTransparency, AspectRatioValue, CurrentBarSize, CurrentFrameScaleFactor)
+--[[
+	@docs BuildFrames
+	@desc Builds the frames for the prompt
+	@param PromptUI : BillboardGui
+	@param ButtonHeldDown : Spring
+	@param PromptTransparency : Spring
+	@param AspectRatioValue : Spring
+	@param CurrentBarSize : Spring
+	@param CurrentFrameScaleFactor : Spring
+	@returns {CanvasGroup, Frame}
+]]
+
+return function(PromptUI, ButtonHeldDown, PromptTransparency, AspectRatioValue, CurrentBarSize, CurrentFrameScaleFactor) : {any}
 	local Frame = New "CanvasGroup" {
 		Size = Spring(Computed(function()
 			return ButtonHeldDown:get() and UDim2.fromScale(0.5, 1) or UDim2.fromScale(1, 1)

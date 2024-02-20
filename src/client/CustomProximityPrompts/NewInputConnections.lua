@@ -23,6 +23,14 @@ local Fusion = require(ReplicatedStorage.Packages.Fusion)
 local New = Fusion.New
 local Hydrate = Fusion.Hydrate
 
+--[[
+	@docs PlaySound
+	@desc Plays a sound with the given SoundId and optional hydrated properties
+	@param SoundId : string
+	@param Properties : {[string]: any}?
+	@returns nil
+]]
+
 local function PlaySound(SoundId, Properties : {[string]: any}?)
 	local Sound = script:FindFirstChild(SoundId)
 
@@ -42,6 +50,13 @@ local function PlaySound(SoundId, Properties : {[string]: any}?)
 	Sound:Play()
 end
 
+--[[
+	@docs StopSound
+	@desc Stops the sound with the given SoundId
+	@param SoundId : string
+	@returns nil
+]]
+
 local function StopSound(SoundId)
 	local Sound = script:FindFirstChild(SoundId)
 
@@ -49,6 +64,13 @@ local function StopSound(SoundId)
 		Sound:Stop()
 	end
 end
+
+--[[
+	@docs NewInputConnections
+	@desc Creates new input connections for the given properties
+	@param Properties : Properties
+	@returns {RBXScriptConnection}
+]]
 
 return function(Properties : Properties) : {RBXScriptConnection}
     local InputConnections = {}

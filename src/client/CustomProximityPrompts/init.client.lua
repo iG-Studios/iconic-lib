@@ -25,6 +25,21 @@ local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
 --[[
+	@docs GetUpdateCallback
+	@args ...any
+	@desc Returns a callback that updates the UI from the prompt
+	@return function
+]]
+
+local function GetUpdateCallback(...)
+	local Args = {...}
+
+	return function()
+		UpdateUIFromPrompt(unpack(Args))
+	end
+end
+
+--[[
 	@docs GetScreenGui
 	@args nil
 	@desc Returns the ScreenGui that the prompts will be parented to.
@@ -54,6 +69,7 @@ end
 ]]
 
 local function CreatePrompt(prompt : ProximityPrompt, inputType : Enum.ProximityPromptInputType, gui : ScreenGui)
+	-- Build state objects
 	local InputFrameScaleFactor = inputType == Enum.ProximityPromptInputType.Touch and 1.6 or 1.33
 	local CurrentFrameScaleFactor = Value(1)
 	local PromptTransparency = Value(1)
@@ -61,6 +77,7 @@ local function CreatePrompt(prompt : ProximityPrompt, inputType : Enum.Proximity
 	local AspectRatioValue = Value(1)
 	local CurrentBarSize = Value(0)
 
+	-- Create input connections
 	local InputConnections : {RBXScriptConnection} = NewInputConnections {
 		prompt = prompt,
 		ButtonHeldDown = ButtonHeldDown,
@@ -70,6 +87,7 @@ local function CreatePrompt(prompt : ProximityPrompt, inputType : Enum.Proximity
 		InputFrameScaleFactor = InputFrameScaleFactor,
 	}
 
+	-- Build the prompt UI
 	local PromptUI = New "BillboardGui" {
 		Name = "Prompt",
 		AlwaysOnTop = true,
@@ -99,6 +117,7 @@ local function CreatePrompt(prompt : ProximityPrompt, inputType : Enum.Proximity
 		[Children] = NewInputLabel(inputType, prompt)
 	}
 
+	-- Include support for clickable prompts and mobile input
 	if inputType == Enum.ProximityPromptInputType.Touch or prompt.ClickablePrompt then
 		local buttonDown = false
 
@@ -140,22 +159,23 @@ local function CreatePrompt(prompt : ProximityPrompt, inputType : Enum.Proximity
 		}
 	end
 
-	local function Update()
-		UpdateUIFromPrompt(
-			prompt,
-			PromptUI,
-			AspectRatioValue,
-			ActionText,
-			ObjectText
-		)
-	end
+	-- Create update callback
+	local UpdateCallback = GetUpdateCallback(
+		prompt,
+		PromptUI,
+		AspectRatioValue,
+		ActionText,
+		ObjectText
+	)
 
-	InputConnections[# InputConnections+1] = prompt.Changed:Connect(Update)
-	Update()
+	InputConnections[# InputConnections+1] = prompt.Changed:Connect(UpdateCallback)
+	UpdateCallback()
 
+	-- Init animation
 	PromptTransparency:set(0)
 
-	return function() -- Cleanup callback
+	 -- Cleanup callback
+	return function()
 		Cleanup(InputConnections)
 		PromptTransparency:set(1)
 		task.wait(2)
