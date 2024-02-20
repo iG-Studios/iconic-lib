@@ -116,12 +116,12 @@ return function(Properties : Properties) : {RBXScriptConnection}
 			PlaySound(CLICK_SOUND)
 		end
 
-		Properties.PromptTransparency:set(1)
+		--Properties.PromptTransparency:set(1)
 	end)
 
-	InputConnections[#InputConnections + 1] = Properties.prompt.TriggerEnded:Connect(function()
-		Properties.PromptTransparency:set(1)
-	end)
+	-- InputConnections[#InputConnections + 1] = Properties.prompt.TriggerEnded:Connect(function()
+	-- 	--Properties.PromptTransparency:set(1)
+	-- end)
 
     return InputConnections
 end
