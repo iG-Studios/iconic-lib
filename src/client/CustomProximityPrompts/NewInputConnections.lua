@@ -78,19 +78,19 @@ return function(Properties : Properties) : {RBXScriptConnection}
 
 	PlaySound(APPEAR_SOUND)
 
-    InputConnections[#InputConnections + 1] = RunService.RenderStepped:Connect(function(deltaTime)
-		local TimeHeldDown = os.clock() - HoldStart
-
-		if Properties.ButtonHeldDown:get() then
-			Properties.CurrentBarSize:set(math.min(Properties.CurrentBarSize:get() + deltaTime / Properties.prompt.HoldDuration, 1))
-
-			script:FindFirstChild(HOLD_SOUND).PlaybackSpeed = 0.5 + TimeHeldDown * 1
-		else
-			Properties.CurrentBarSize:set(0)
-		end
-	end)
-
 	if Properties.prompt.HoldDuration > 0 then
+		InputConnections[#InputConnections + 1] = RunService.RenderStepped:Connect(function(deltaTime)
+			local TimeHeldDown = os.clock() - HoldStart
+	
+			if Properties.ButtonHeldDown:get() then
+				Properties.CurrentBarSize:set(math.min(Properties.CurrentBarSize:get() + deltaTime / Properties.prompt.HoldDuration, 1))
+	
+				script:FindFirstChild(HOLD_SOUND).PlaybackSpeed = 0.5 + TimeHeldDown * 1
+			else
+				Properties.CurrentBarSize:set(0)
+			end
+		end)
+
 		InputConnections[#InputConnections + 1] = Properties.prompt.PromptButtonHoldBegan:Connect(function()
 			HoldStart = os.clock()
 			PlaySound(HOLD_SOUND, {
@@ -114,6 +114,9 @@ return function(Properties : Properties) : {RBXScriptConnection}
 			PlaySound(TRIGGER_SOUND)
 		else
 			PlaySound(CLICK_SOUND)
+			Properties.ButtonHeldDown:set(true)
+
+			task.delay(1 / 60, Properties.ButtonHeldDown.set, Properties.ButtonHeldDown, false)
 		end
 
 		--Properties.PromptTransparency:set(1)
