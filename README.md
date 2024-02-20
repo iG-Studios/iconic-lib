@@ -1,6 +1,5 @@
 # iconic-lib
 A set of code assets and systems to assist with our needs and yours.
------
 
 ## CustomProximityPrompts
 A client-sided ProximityPrompt wrapper made entirely with Fusion.
