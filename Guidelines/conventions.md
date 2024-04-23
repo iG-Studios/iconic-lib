@@ -175,6 +175,7 @@ In this case, it describes what you did to make your code work. Having it "work"
 * Keep code to *reasonable* minimum. Do not obfuscate or keep statements on single lines. Do not overwrite code. Do not make variables if you will only use them once. Do not repeat yourself. Do not cache inline functions, such as those from the math or cframe libraries, for example; Luau includes inline caching.
 * Assign variables to the smallest possible scope.
 * Return in a function as soon as possible.
+* Do not error unless you are in a unreturnable state of failure.
 
 ## Misc Styling
 * Sealed tables are reserved for constants such as configurations or settings. Modules, classes, etc are all to be declared in an unsealed table.
@@ -204,4 +205,33 @@ Good example:
 for _, Value : number in Array do
     -- Thing
 end
+```
+
+## OOP Format
+Follow this format for writing OOP code:
+
+```lua
+local Object = {}
+Object.__index = Object
+
+function Object.new(Foo : number, Bar : string)
+    local self = setmetatable({}, Object) -- UNSEALED TABLE!!!
+
+    self.Foo = Foo
+    self.Bar = Bar
+
+    self:Init()
+
+    return self
+end
+
+function Object:Init()
+    -- Initialization
+    self:Method()
+end
+
+function Object:Method()
+end
+
+return Object
 ```
