@@ -165,3 +165,20 @@ end
 local function Bar() -- Good
 end
 ```
+
+## Prototype Functionality
+What exactly is "prototype functionality"? We don't know, we made that term up.
+
+In this case, it describes what you did to make your code work. Having it "work" isn't good enough, it should make sense as to *why* it works.
+
+* Avoid Boolean arguments that change the behavior of a function almost entirely. If you pass a boolean and it changes what the function does, then that is called “inappropriate sharing.” Duplication is superior this; create different functions that do different things, not a single function that does different things.
+* Keep code to *reasonable* minimum. Do not obfuscate or keep statements on single lines. Do not overwrite code. Do not make variables if you will only use them once. Do not repeat yourself. Do not cache inline functions, such as those from the math or cframe libraries, for example; Luau includes inline caching.
+
+## Misc Styling
+* Sealed tables are reserved for constants such as configurations or settings. Modules, classes, etc are all to be declared in an unsealed table.
+* Use plain `key` syntax for dictionaries when possible, but if there are any entries that cannot follow that, then use `["key"]`syntax.
+* Add a trailing comma to all dictionary fields in a table, but not to the last value of an array.
+* Strings are written with either plain double-quote (`"`) syntax or as an interpolated string.
+* Line lengths shouldn't be ridiculous. If they are, your code has something wrong with it.
+* Use dot (`Table.Value`) notation for accessing values in a table when possible (as opposed to something like `Table["Value"]`).
+
