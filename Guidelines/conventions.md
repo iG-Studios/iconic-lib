@@ -1,5 +1,5 @@
 # Coding Conventions
-*Iconic Gaming Coding conventions seek to increase clarity & readibility among code. Inspirations are from [here](https://github.com/luarocks/lua-style-guide) and [here](https://devforum.roblox.com/t/programming-guidelines-make-your-code-industry-standard/1293822)*.
+*Iconic Gaming Coding conventions seek to increase clarity & readibility among code. Inspirations are from [here](https://github.com/luarocks/lua-style-guide) and [here](https://devforum.roblox.com/t/programming-guidelines-make-your-code-industry-standard/1293822). Under the assumption this is for Roblox's Luau language base*.
 
 Go back to out guidelines [here](./index.md).
 
@@ -188,6 +188,7 @@ In this case, it describes what you did to make your code work. Having it "work"
 * Add blank lines between functions.
 * Do not align variable declarations.
 * Do not add spaces after the name of a function in a declaration or in its arguments.
+* Files should always be named in `PascalCase`.
 
 ## Typing
 Type a reasonable amount, nobody should guess if "Value" is a number, string, or table. Overtyping is still annoying.
