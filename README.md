@@ -2,7 +2,7 @@
 A set of code assets and systems to assist with our needs and yours.
 
 ## Coding Guidelines
-Visit it [here](/Guidelines/index.md).
+Visit Iconic Gaming's coding guidelines [here](/Guidelines/index.md).
 
 ## CustomProximityPrompts
 A client-sided ProximityPrompt wrapper made entirely with Fusion.
