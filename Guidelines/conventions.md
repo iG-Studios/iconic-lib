@@ -64,7 +64,7 @@ end
 > [!TIP]
 > If the project already has documentation in a different format (or not at all), use Moonwave from then-on anyways.
 
-## Variable Styling
+## Variable and Function Styling
 Variable, function, and other userdata names should match the below styles:
 * Constants are written in `UPPER_CASE`.
 * Constructors and other instance-class functions are written in `camelCase`.
@@ -137,3 +137,31 @@ local PlayerGui = Player.PlayerGui
 > [!INFORMATION]
 > The number one counter-argument to keeping consistent styling and good naming is "already knowing what everything does". At Iconic Gaming, that does not cut it. Whether you are working by yourself or with others, at some point in the future the code will need to be iterated upon, and in order to do so there should not be time wasted asking "what does everything do?"
 
+## Function Naming
+Like variables, functions need solid names as well. Bear the following in mind:
+* Functions, when called, happen in the moment as an event. As such, they must be named as if they are in present verb form. Examples:
+  * Change `AllChildren()` to `GetAllChildren()` as this clarifies that the function is a "getter" method.
+  * Change `PlayerMovement()` to `MovePlayer()` as this implies the userdata a call to action rather than a state.
+* Functions should clarify what data is processed and how it is processed. To do so, include terms such as the type of data, the action, etc in the naming. Examples:
+  * Change `Clamp()` to `ClampNumber()` if you are clamping a number.
+  * Change `Drink()` to `ConsumeDrink()`, since "Drink" can also represent an object, while "Consume" is *always* a call to action.
+
+The general rule of thumb is to include as much description in a function name as possible without needing the use of comments or documentation.
+
+## Userdata Delcaration
+Always use the `local` keyword within any scope, including the top one. Functions have function syntax, variables have variable syntax.
+
+```lua
+Foo = 5 -- Bad
+
+local Foo = 5 -- Good
+
+function Bar() -- Bad
+end
+
+local Bar = function() -- Bad
+end
+
+local function Bar() -- Good
+end
+```
