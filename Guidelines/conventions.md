@@ -177,6 +177,53 @@ In this case, it describes what you did to make your code work. Having it "work"
 * Return in a function as soon as possible.
 * Do not error unless you are in a unreturnable state of failure.
 
+Bad example:
+
+```lua
+local Cos = math.cos
+local LerpCFrame = CFrame.new().Lerp
+
+local function DoEitherAction(Value : boolean)
+    if Value then
+        -- Action 1
+    else
+        -- Action 2
+    end
+end
+
+local function ReturnSlow()
+    local IsGood = ...
+
+    -- Execute code
+
+    return IsGood
+end
+```
+
+Good example:
+
+```lua
+local function Foo()
+    -- Action 1
+end
+
+local function Bar()
+    -- Action 2
+end
+
+local function ReturnFast()
+    local IsGood = ...
+
+    if not IsGood then
+        return
+    end
+
+    -- Execute code
+
+    return true
+end
+```
+
 ## Misc Styling
 * Sealed tables are reserved for constants such as configurations or settings. Modules, classes, etc are all to be declared in an unsealed table.
 * Use plain `key` syntax for dictionaries when possible, but if there are any entries that cannot follow that, then use `["key"]`syntax.
@@ -184,11 +231,56 @@ In this case, it describes what you did to make your code work. Having it "work"
 * Strings are written with either plain double-quote (`"`) syntax or as an interpolated string.
 * Line lengths shouldn't be ridiculous. If they are, your code has something wrong with it. Do not do single-line blocks.
 * Use dot (`Table.Value`) notation for accessing values in a table when possible (as opposed to something like `Table["Value"]`).
-* Put a space after typing a comment declaration (`--`).
+* Put a space before and after typing a comment declaration (`--`). Comments follow standard English rules.
 * Add blank lines between functions.
 * Do not align variable declarations.
 * Do not add spaces after the name of a function in a declaration or in its arguments.
 * Files should always be named in `PascalCase`.
+
+Bad example:
+```lua
+local SETTINGS = {}
+SETTINGS["EntryA"] = 1
+SETTINGS["EntryB"] = 2
+SETTINGS["EntryC"] = 3
+
+local Foo = {}--comment
+
+local String = 'Hi'
+
+local function FunctionA()
+    Foo = {A = 5, B = 6, C = 7}
+end
+local function FunctionB()
+
+end
+print(Foo["A"])
+```
+
+Good example:
+```lua
+local SETTINGS = {
+    EntryA = 1,
+    EntryB = 2,
+    EntryC = 3,
+}
+
+local Foo = {} -- Comment here
+
+local String = "Hi"
+
+local function FunctionA()
+    Foo.A = 5
+    Foo.B = 6
+    Foo.C = 7
+end
+
+local function FunctionB()
+
+end
+
+print(Foo.A)
+```
 
 ## Typing
 Type a reasonable amount, nobody should guess if "Value" is a number, string, or table. Overtyping is still annoying.
