@@ -1,7 +1,7 @@
 # Coding Conventions
 *Iconic Gaming Coding conventions seek to increase clarity & readibility among code. Inspirations are from [here](https://github.com/luarocks/lua-style-guide) and [here](https://devforum.roblox.com/t/programming-guidelines-make-your-code-industry-standard/1293822). Under the assumption this is for Roblox's Luau language base*.
 
-Go back to out guidelines [here](./index.md).
+Go back to our guidelines [here](./index.md).
 
 ## Indentation
 Indentation should be done exclusively through the `TAB` key.
