@@ -10,9 +10,9 @@
 View our coding conventions [here](./conventions.md).
 
 ## Tools
-*twentycharacters*.
+*Iconic Gaming uses a variety of tools in programming development to assist with code creation, version control, and iteration*.
 
-View our coding conventions [here](./conventions.md).
+View our coding conventions [here](./tools.md).
 
-## Best Practices
+## TBD
 *TBD*
