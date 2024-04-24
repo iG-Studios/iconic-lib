@@ -124,7 +124,7 @@ local CONFIG = {Speed = 5}
 local PlayersService = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Packages = repstore:WaitForChild("Packages")
+local Packages = ReplicatedStorage:WaitForChild("Packages")
 local Fusion = require(Packages.Fusion)
 local New = Fusion.New
 local Hydrate = Fusion.Hydrate
