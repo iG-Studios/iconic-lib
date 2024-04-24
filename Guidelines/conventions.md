@@ -393,3 +393,42 @@ end
 
 return Object
 ```
+
+## File Organization
+Here is the file structure we use at Iconic Gaming:
+* `ReplicatedFirst`
+  * `./Client`
+    * All client scripts
+  * `./Dependencies`
+    * All client modules
+  * `./Assets`
+    * All client assets
+* `ServerScriptService`
+  * `./Server`
+    * All server scripts
+  * `./Dependencies`
+    * All server modules
+* `ReplicatedStorage`
+  * `./Common`
+    * All shared modules
+  * `./Assets`
+    * All shared assets
+* `ServerStorage`
+  * `./Assets`
+    * All server assets
+
+## Modularization
+Modularization is important to make sure that functionality is divided into isolated scopes, either through functions or modules.
+
+Functions should be reserved for splitting functionality that is part of a larger picture in a script or module. For example, a weapon might have functions to shoot, reload, etc.
+
+Modules are used to separate bigger things to create libraries, databases, and systems. Some examples of things that are their own modules include:
+* Configurations
+* Utilities
+* Systems
+* Frameworks
+* Classes
+* Etc
+
+> [!TIP]
+> Variable modularization is the smallest level of splitting up information into something more digestible. This is something you should eyeball, with the general rule of thumb being "if it's readable, it's good. Make sure to utilize variables still for repeated information.
