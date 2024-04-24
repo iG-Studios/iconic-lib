@@ -3,6 +3,71 @@
 
 Go back to our guidelines [here](./index.md).
 
+## Juxtaposition
+The juxtaposition of information and instructions should be consistent to ensure that there are no problems with knowing where everything is.
+
+At Iconic Gaming, we order information starting with (if all are applicable) module declaration, then types, constants, services, imports, types extended, variables, functions, class functions, and finally object methods. Any additional code not wrapped in a function or method after everything should be instead put into an `Init()` function which is called at the end of the script, returning nothing. If the script is a module, but `Init()` on the end of the return line.
+
+"Types extended" are types that are generated from imports.
+
+Imports are required modules. Before that, though, the top of the imports section should be variables for containing folders. Any variables that directly inherit from imports should be placed at the bottom.
+
+Here is an example utilizing all data and information types:
+
+```lua
+local Class = {}
+Class.__index = Class
+
+-- Types
+type Dictionary = {
+    [string] : any,
+}
+
+-- Constants
+local CONSTANT_A = 999
+local CONSTANT_B = 111
+
+-- Services
+local PlayersService = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+-- Imports
+local Packages = ReplicatedStorage:WaitForChild("Packages")
+local Fusion = require(Packages.Fusion)
+local Module = require(script.Module)
+local New = Fusion.New
+local Spring = Fusion.Spring
+
+-- Types extended
+type ModuleType = typeof(ModuleType.Thing) && {
+    A : number,
+    B : number,
+}
+
+local function Foo()
+
+end
+
+local function Bar()
+
+end
+
+local function Init()
+    Foo()
+    Bar()
+end
+
+function Class.new()
+    return self
+end
+
+function Class:Method()
+
+end
+
+return Class, Init()
+```
+
 ## Indentation
 Indentation should be done exclusively through the `TAB` key.
 
