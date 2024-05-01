@@ -1,3 +1,8 @@
+--[[
+    Usage: local Import, Query, GetContents = _G.GetQueryMethods()
+    OR: local Import, Query, GetContents = require(Path.To.Queries).GetQueryMethods()
+]]
+
 -- Constants
 local SOURCE_LOOKUP_TIMEOUT = 5
 

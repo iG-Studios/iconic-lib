@@ -4,6 +4,10 @@ A set of code assets and systems to assist with our needs and yours.
 ## Coding Guidelines
 Visit Iconic Gaming's coding guidelines [here](/Guidelines/index.md).
 
+## Queries
+A shared library of global functions to query, import, and unpack content.
+Latest release: https://github.com/iG-Studios/iconic-lib/releases/tag/Queries-v1.0.0
+
 ## CustomProximityPrompts
 A client-sided ProximityPrompt wrapper made entirely with Fusion.
 You can see a showcase of it [here](https://twitter.com/iGottic_Real/status/1759282721744998633).
