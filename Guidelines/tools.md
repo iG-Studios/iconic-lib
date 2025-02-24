@@ -11,12 +11,7 @@ Below are the tools we use for development:
 * Aftman *(as a non-Luau package manager)*
 * Visual Studio Code *(as the coding environment)*
   * Also, use extentions such as RobloxLSP, Selene, etc to enhance the environment
-* Spotify *(for motivation)*
-
-## Tools We Are Considering
-Below are some tools we haven't implemented but would like to use:
-* DarkLua *(for require pathing)*
-* Hoarcekat *(for user interface storybooking)*
+* UILabs *(for storybooking)*
 
 ## TBD
 *TBD*
